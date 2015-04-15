@@ -17,9 +17,9 @@ foreach(TEST ${LIBCELLML_TESTS})
   endif()
   add_executable(${CURRENT_TEST} ${${TEST}_SRCS} ${${TEST}_HDRS})
   target_link_libraries(${CURRENT_TEST} cellml gtest_main)
-  if(LIBCELLML_TREAT_WARNINGS_AS_ERRORS)
-    target_warnings_as_errors(${CURRENT_TEST})
-  endif()
+#  if(LIBCELLML_TREAT_WARNINGS_AS_ERRORS)
+#    target_warnings_as_errors(${CURRENT_TEST})
+#  endif()
 
   add_test(${CURRENT_CATEGORY}unit_${CURRENT_TEST} ${CURRENT_TEST})
   list(APPEND TEST_LIST ${CURRENT_TEST})
@@ -34,6 +34,7 @@ if(LIBCELLML_COVERAGE)
     COMMAND ctest > /dev/null
     COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/gcov
     COMMENT "Prepare for coverage tests")
+
   add_custom_target(coverage
     COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/gcovcoverage.py ${GCOV_ANALYSIS_PATH} ${GCOV_PREFIX_PATH} ${GCOV_BUILD_PREFIX_PATH}
     DEPENDS ${TEST_LIST} prepare_coverage
@@ -45,6 +46,7 @@ if(LIBCELLML_MEMCHECK)
   add_custom_target(prepare_memcheck
     COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/memcheck
     COMMENT "Prepare for memcheck tests")
+
   add_custom_target(memcheck
     COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/valgrindmemcheck.py ${CMAKE_CURRENT_BINARY_DIR} ${TEST_LIST}
     DEPENDS ${TEST_LIST} prepare_memcheck
