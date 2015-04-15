@@ -23,11 +23,34 @@ include(common)
 
 # Use the following variables when configuring the build from the command line to
 # set the corresponding cache variables.
-# TESTS ==> LIBCELLML_TESTS
+
+# COVERAGE ==> LIBCELLML_COVERAGE
+set(_PARAM_ANNOTATION "Enable coverage testing.")
+if(CMAKE_COMPILER_IS_GNUCXX)
+  set( LIBCELLML_COVERAGE OFF CACHE BOOL ${_PARAM_ANNOTATION} )
+endif()
+if( COVERAGE AND CMAKE_COMPILER_IS_GNUCXX )
+  set( LIBCELLML_COVERAGE "${COVERAGE}" CACHE BOOL ${_PARAM_ANNOTATION} FORCE )
+endif()
+
+# MEMCHECK ==> LIBCELLML_MEMCHECK
+set(_PARAM_ANNOTATION "Enable memcheck testing.")
+if(CMAKE_COMPILER_IS_GNUCXX)
+  set( LIBCELLML_MEMCHECK OFF CACHE BOOL ${_PARAM_ANNOTATION} )
+endif()
+if( MEMCHECK AND CMAKE_COMPILER_IS_GNUCXX )
+  set( LIBCELLML_MEMCHECK "${MEMCHECK}" CACHE BOOL ${_PARAM_ANNOTATION} FORCE )
+endif()
+
+# UNIT_TESTS ==> LIBCELLML_UNIT_TESTS
 set(_PARAM_ANNOTATION "Enable build of automated LibCellML tests.")
-set( LIBCELLML_TESTS OFF CACHE BOOL ${_PARAM_ANNOTATION} )
-if( TESTS )
-  set( LIBCELLML_TESTS "${TESTS}" CACHE BOOL ${_PARAM_ANNOTATION} FORCE )
+set( LIBCELLML_UNIT_TESTS OFF CACHE BOOL ${_PARAM_ANNOTATION} )
+if( UNIT_TESTS )
+  set( LIBCELLML_UNIT_TESTS "${UNIT_TESTS}" CACHE BOOL ${_PARAM_ANNOTATION} FORCE )
+endif()
+
+if(LIBCELLML_COVERAGE OR LIBCELLML_MEMCHECK)
+  set(LIBCELLML_UNIT_TESTS ON CACHE BOOL ${_PARAM_ANNOTATION} FORCE)
 endif()
 
 # TWAE ==> LIBCELLML_WARNINGS_AS_ERRORS -- Note: This excludes third party code, where warnings are never treated as errors.
@@ -42,6 +65,9 @@ set(_PARAM_ANNOTATION "Choose the type of build, options are: None(CMAKE_CXX_FLA
 set( LIBCELLML_BUILD_TYPE "Release" CACHE STRING ${_PARAM_ANNOTATION} )
 if( BUILD_TYPE )
   set( LIBCELLML_BUILD_TYPE ${BUILD_TYPE} CACHE STRING ${_PARAM_ANNOTATION} FORCE )
+endif()
+if( LIBCELLML_MEMCHECK )
+  set( LIBCELLML_BUILD_TYPE "Debug" CACHE STRING ${_PARAM_ANNOTATION} FORCE )
 endif()
 
 # INSTALL_PREFIX ==> LIBCELLML_INSTALL_PREFIX
@@ -67,7 +93,7 @@ set( CMAKE_CODEBLOCKS_EXECUTABLE "" CACHE INTERNAL "The CodeBlocks executable" F
 # cellml library target
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-if (LIBCELLML_TESTS)
+if (LIBCELLML_UNIT_TESTS)
   # enable testing here so that we can make use of the 'test' target
   enable_testing()
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/tests)
