@@ -64,7 +64,7 @@ target_include_directories(cellml
   ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-if(LIBCELLML_WARNINGS_TREATED_AS_ERRORS)
+if(LIBCELLML_TREAT_WARNINGS_AS_ERRORS)
   target_warnings_as_errors(cellml)
 endif()
 

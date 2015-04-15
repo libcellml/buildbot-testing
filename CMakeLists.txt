@@ -56,8 +56,8 @@ endif()
 # TWAE ==> LIBCELLML_WARNINGS_AS_ERRORS -- Note: This excludes third party code, where warnings are never treated as errors.
 set(_PARAM_ANNOTATION "Treat warnings as errors (note: warnings in 3rd party code are never treated as errors)")
 set( LIBCELLML_TREAT_WARNINGS_AS_ERRORS OFF CACHE BOOL ${_PARAM_ANNOTATION} )
-if( WARNINGS_TREATED_AS_ERRORS )
-  set( LIBCELLML_TREAT_WARNINGS_TREATED_AS_ERRORS "${WARNINGS_TREATED_AS_ERRORS}" CACHE BOOL ${_PARAM_ANNOTATION} FORCE )
+if( TWAE )
+  set( LIBCELLML_TREAT_WARNINGS_TREATED_AS_ERRORS "${TWAE}" CACHE BOOL ${_PARAM_ANNOTATION} FORCE )
 endif()
 
 # BUILD_TYPE ==> LIBCELLML_BUILD_TYPE
