@@ -1,0 +1,8 @@
+
+# The version number.
+set(LIBCELLML_VERSION_MAJOR 0)
+set(LIBCELLML_VERSION_MINOR 1)
+set(LIBCELLML_VERSION_PATCH 0)
+
+
+
