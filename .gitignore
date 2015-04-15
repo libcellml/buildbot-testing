@@ -1,6 +1,6 @@
 
 # Ignore build/ directories
-build/
+docs/_build/
 
 # Eclipse project files
 .project
