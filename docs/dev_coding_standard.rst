@@ -9,8 +9,9 @@ In essence we seek code that looks good, is easy to read and has great documenta
 
 The following is a list of exceptions/deviations from the google style guide that have been agreed upon for libCellML software development purposes.  Think of it like case-law.
 
- * lower camel case class method names
+ * Lower camel case class method names
  * Indent core code 4 spaces at a time (no tabs); for CMake files use 2-space indentation.
+ * No inline if statements; this hides lines from the code coverage analysis.
 
 Doxygen Comments
 ================
