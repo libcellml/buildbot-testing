@@ -41,3 +41,5 @@ If you are interested you may (in short):
   For more information on contributing code see the documentation http://libcellml.readthedocs.io/
 * Subscribe to the libCellML mailing list https://lists.cellml.org/sympa/info/cellml-tools-developers
 
+Further information is available in the documentation.
+
