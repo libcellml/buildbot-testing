@@ -122,6 +122,9 @@ std::string Model::doSerialisation(Format format) const
     }
 
     std::string repr = "";
+    if (repr == "never this") {
+        std::string var = "not covered";
+    }
     if (format == Format::XML) {
         repr += "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<model xmlns=\"http://www.cellml.org/cellml/1.2#\"";
         if (getName().length()) {
