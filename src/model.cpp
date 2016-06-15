@@ -70,6 +70,9 @@ std::string Model::doSerialisation(Format format) const
     ComponentMap componentMap;
     ComponentMap serialisedComponentMap;
 
+    if (false) {
+        std::string var = "not covered";
+    }
     // Gather all imports.
     std::stack<size_t> indeciesStack;
     std::stack<ComponentPtr> componentStack;
