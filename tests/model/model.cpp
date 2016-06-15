@@ -20,7 +20,7 @@ limitations under the License.
 
 
 TEST(Model, serialise) {
-    const std::string e = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<model xmlns=\"http://www.cellml.org/cellml/1.2#\"/>";
+    const std::string e = "<?xml version=\"2.0\" encoding=\"UTF-8\"?>\n<model xmlns=\"http://www.cellml.org/cellml/1.2#\"/>";
     libcellml::Model m;
     std::string a = m.serialise(libcellml::Format::XML);
 
