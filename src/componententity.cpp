@@ -74,7 +74,7 @@ ComponentEntity::ComponentEntity()
 
 ComponentEntity::~ComponentEntity()
 {
-    delete mPimpl;
+    //delete mPimpl;
 }
 
 ComponentEntity::ComponentEntity(const ComponentEntity &rhs)
