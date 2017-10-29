@@ -15,7 +15,7 @@
 
 cmake_minimum_required(VERSION 3.2)
 
-set(PROJECT_NAME libCellML)
+set(PROJECT_NAME libCellML-Edit)
 project(${PROJECT_NAME} CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -43,7 +43,7 @@ if( MEMCHECK AND CMAKE_COMPILER_IS_GNUCXX )
 endif()
 
 # UNIT_TESTS ==> LIBCELLML_UNIT_TESTS
-set(_PARAM_ANNOTATION "Enable build of automated LibCellML tests.")
+set(_PARAM_ANNOTATION "Enable build of automated libCellML tests.")
 set( LIBCELLML_UNIT_TESTS OFF CACHE BOOL ${_PARAM_ANNOTATION} )
 if( UNIT_TESTS )
   set( LIBCELLML_UNIT_TESTS "${UNIT_TESTS}" CACHE BOOL ${_PARAM_ANNOTATION} FORCE )
