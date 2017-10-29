@@ -1,6 +1,6 @@
 
 # Ignore build/ directories
-docs/_build/
+build/
 
 # Eclipse project files
 .project
@@ -9,4 +9,7 @@ docs/_build/
 
 # Qt Creator generated files
 CMakeLists.txt.user
+
+# OS X hidden system files
+.DS_Store
 
