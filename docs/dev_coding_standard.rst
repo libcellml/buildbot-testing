@@ -11,6 +11,7 @@ The following is a list of exceptions/deviations from the google style guide tha
 
  * Lower camel case class method names
  * Indent core code 4 spaces at a time (no tabs); for CMake files use 2-space indentation.
+ * No inline if statements; this hides lines from the code coverage analysis.
 
 Doxygen Comments
 ================
